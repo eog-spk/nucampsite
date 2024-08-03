@@ -5,18 +5,19 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import CampsiteDetailPage from "./pages/CampsiteDetailPage";
-
 import CampsitesDirectoryPage from "./pages/CampsitesDirectoryPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/directory" element={<CampsitesDirectoryPage />} />
-        <Route path="/directory/:campsiteId" element={<CampsiteDetailPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path='/directory' element={<CampsitesDirectoryPage />} />
+        <Route path='/directory/:campsiteId' element={<CampsiteDetailPage />} />
+        <Route path='/about' element={<AboutPage />} />
       </Routes>
 
       <Footer />
