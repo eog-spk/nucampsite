@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validateCommentForm } from "../../utils/validateCommentForm";
-import { addComment } from "./CommentsSlice";
+import { postComment } from "./CommentsSlice";
 
 const CommentForm = ({ campsiteId }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +24,7 @@ const CommentForm = ({ campsiteId }) => {
       campsiteId: parseInt(campsiteId),
     };
     console.log("form data", comment);
-    dispatch(addComment(comment));
+    dispatch(postComment(comment));
     setModalOpen(false);
     resetForm();
   };

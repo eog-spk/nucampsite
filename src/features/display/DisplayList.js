@@ -6,7 +6,8 @@ import { selectFeaturedCampsites } from "../campsites/CampsitesSlice";
 import { selectFeaturedPromotion } from "../promotions/promotionsSlice";
 import { selectFeaturedPartners } from "../partners/PartnersSlice";
 
-import { useState } from "react";
+import Error from "../../components/Error";
+import Loading from "../../components/Loading";
 
 const DisplayList = () => {
   const items = useSelector((state) => [
@@ -20,10 +21,16 @@ const DisplayList = () => {
   return (
     <Row>
       {items.map((item, index) => {
+        const { featured, isLoading, errMsg } = item;
+        if (isLoading) return <Loading key={index} />;
+        if (errMsg) return <Error key={index} errMsg={errMsg} />;
+
         return (
-          <Col md='5' className='m-1' key={index}>
-            <DisplayCard item={item} />
-          </Col>
+          featured && (
+            <Col md='5' className='m-1' key={index}>
+              <DisplayCard item={featured} />
+            </Col>
+          )
         );
       })}
     </Row>
